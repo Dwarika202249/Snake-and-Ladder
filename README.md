@@ -2,7 +2,7 @@
 
 ## VERSION SL 1.0
 
-# What we have in this game:
+## What we have in this game:
  1. Single Player
  2. Simple UI of Board
  3. Three colors yellow, green, and red indicate the current position, snake, and ladder respectively.
