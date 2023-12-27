@@ -9,10 +9,12 @@
 
 ## HOW TO PLAY
  1. Just click on "Roll Dice" button.
- 2. Two alerts will come: a. show your rolled dice number and b. updated current position.
- 3. In this way, you have to reach to 100. AND "YOU WON"
+ 2. Two alerts will come:
+  a. show your rolled dice number
+  b. updated current position.
+ 4. In this way, you have to reach 100. AND "YOU WON"
 
 
 
-#                        ==  DWARIKA KUMAR  ==
-#                        ==    THANK YOU    ==
+
+THANK YOU !!!
