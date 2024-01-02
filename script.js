@@ -85,7 +85,7 @@ function movePlayer(currentPosition, diceValue) {
     const winPopup = document.createElement("div");
     winPopup.className = "win-popup";
     winPopup.innerHTML = `<h2>Congratulations! You won!</h2>
-                          <h3>You rolled the Dice ${clickCount} times.</h3>`;
+                          <h3>You rolled the Dice ${clickCount+1} times.</h3>`;
     document.body.appendChild(winPopup);
     // Play winning audio
     const winningAudio = new Audio("./audio/winning_sound.mp3");

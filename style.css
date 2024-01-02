@@ -156,64 +156,32 @@ body {
   .cell {
     font-size: 10px;
   }
-
-  .dice {
-    width: 30px;
-    height: 30px;
-    margin: 8px;
-  }
-
-  .rollDice {
-    border-radius: 3px;
-    font-size: 12px;
-    padding: 8px 12px;
-    border: 1px solid rgb(35, 5, 62);
-  }
 }
 
 @media screen and (max-width: 680px) {
   .container {
     flex-direction: column;
+    justify-content: center;
   }
 
   .board {
     grid-template-columns: repeat(10, 35px);
     grid-template-rows: repeat(10, 35px);
+    margin: 40px 0px;
     gap: 1px;
   }
 
   .leftContainer > img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .leftContainer > h1 {
-    font-size: 18px;
-  }
-
-  .leftContainer > p {
-    font-size: 16px;
+    width: 120px;
+    height: 120px;
   }
 }
 
 @media screen and (max-width: 375px) {
 
   .board {
-    grid-template-columns: repeat(10, 30px);
-    grid-template-rows: repeat(10, 30px);
-    gap: 0.5px;
-  }
-
-  .leftContainer > img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .leftContainer > h1 {
-    font-size: 16px;
-  }
-
-  .leftContainer > p {
-    font-size: 12px;
+    grid-template-columns: repeat(10, 32px);
+    grid-template-rows: repeat(10, 32px);
+    gap: 1px;
   }
 }
