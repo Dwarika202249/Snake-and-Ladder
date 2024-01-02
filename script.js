@@ -34,12 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 // function to move the player
-function movePlayer(currentPosition, diceValue) {
+function movePlayer(currentPosition, diceValue, clickCount) {
     const newPosition = currentPosition + diceValue;
   
-    // Check if the player has landed on a snake or ladder
+    // Check if the player has landed on a snake
     if (snakesAndLadders[newPosition]) {
-      playSnakeOrLadderAudio(); // Play audio for snake or ladder
+      playSnakeOrLadderAudio(); 
       playSnakeAnimation(newPosition); // Play GIF animation
       return snakesAndLadders[newPosition];
     }
@@ -51,10 +51,9 @@ function movePlayer(currentPosition, diceValue) {
     }
 
     // Check if the player has exceeded position 100
-    // if (newPosition > 100) {
-    //   showWinPopup(clickCount);
-    //   return 100; // Set the player's position to 100 (winning position)
-    // }
+    if (newPosition > 100) {
+      return currentPosition; // player position will not change
+    }
   
     return newPosition;
   }
@@ -85,7 +84,7 @@ function movePlayer(currentPosition, diceValue) {
     const winPopup = document.createElement("div");
     winPopup.className = "win-popup";
     winPopup.innerHTML = `<h2>Congratulations! You won!</h2>
-                          <h3>You rolled the Dice ${clickCount+1} times.</h3>`;
+                          <h3>You rolled the Dice ${clickCount} times.</h3>`;
     document.body.appendChild(winPopup);
     // Play winning audio
     const winningAudio = new Audio("./audio/winning_sound.mp3");
@@ -194,9 +193,9 @@ function movePlayer(currentPosition, diceValue) {
 
   // handle dice roll
   rollDiceButton.addEventListener("click", () => {
-    const clickCountWin = clickCount + 1;
+    clickCount = clickCount + 1;
     const diceValue = rollDice();
-    const newPosition = movePlayer(playerPosition, diceValue, clickCountWin);
+    const newPosition = movePlayer(playerPosition, diceValue, clickCount);
 
     // Animate the player movement
     animatePlayerMovement(playerPosition, newPosition);
