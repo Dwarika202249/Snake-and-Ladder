@@ -9,7 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     cell.id = i;
-    cell.textContent = i;
+    if(cell.id == 100) {
+        cell.style.backgroundColor = "blue";
+        cell.style.color = "white";
+        cell.textContent = "WIN";
+    } else {
+        cell.textContent = i;
+    }
     board.appendChild(cell);
   }
 
