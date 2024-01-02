@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="./images/favicon.ico">
     <link rel="stylesheet" href="style.css">
-    <title>Snakes and Ladders</title>
+    <title>Snakes and Ladders Game</title>
 </head>
 <body>
-    <div class="board" id="board"></div>
-    <button id="rollDice">Roll Dice</button>
+    <div class="container">
+        <div class="leftContainer">
+            <h1>SaanpSidhi</h1>
+            <p>The Classic Snakes and Ladders Game</p>
+            <img src="./images/snake_ladder.png" alt="snake&ladder">
+        </div>
+        <div class="board" id="board"></div>
+        <div class="rightContainer">
+            <div class="dice-container" id="diceContainer"></div>
+            <button id="rollDice" class="rollDice"">Roll Dice</button>
+        </div>
+    </div>
+    <audio id="diceRollSound" src="./audio/dice_roll_sound.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>

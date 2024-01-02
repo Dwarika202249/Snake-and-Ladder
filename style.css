@@ -1,37 +1,219 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  background-color: rgb(255, 199, 59);
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.leftContainer > p {
+  font-size: 18px;
+}
+
+.leftContainer > img {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
 }
 
 .board {
-    display: grid;
-    grid-template-columns: repeat(10, 50px);
-    grid-template-rows: repeat(10, 50px);
-    gap: 2px;
-    border: 2px solid #000;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
+  gap: 2px;
+  border: 3px solid #000;
+  margin-bottom: 20px;
+  background-color: rgba(219, 237, 241, 0.4);
 }
 
 .cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid #000;
+  transition: background-color 1s ease-in-out;
 }
 
 .snake {
-    background-color: red;
+  background-color: rgb(255, 76, 76);
+}
+
+.snake-ladder-animation > img {
+  width: 50px;
+  height: 50px;
 }
 
 .ladder {
-    background-color: green;
+  background-color: rgb(125, 254, 125);
 }
 
 .active {
-    background-color: yellow;
+  border-radius: 50%;
+  background-color: yellow; /* Change the background color for the active cell */
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border: 1px solid #000;
+  background-size: cover;
+}
+
+.rollDice {
+  background-color: blueviolet;
+  color: #000;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 10px 15px;
+  font-weight: bold;
+  border: none;
+  border: 2px solid rgb(35, 5, 62);
+}
+
+.rollDice:hover {
+  cursor: pointer;
+}
+
+/* Add a style for the disabled button */
+#rollDice:disabled {
+  background-color: #ccc; /* Change the background color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate the button is not clickable */
+  opacity: 0.6;
+}
+
+.win-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  border: 2px solid #3498db;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* media queries css */
+
+@media screen and (max-width: 1000px) {
+  .board {
+    grid-template-columns: repeat(10, 35px);
+    grid-template-rows: repeat(10, 35px);
+  }
+
+  .leftContainer > img {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .board {
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+    gap: 1px;
+  }
+
+  .leftContainer > img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .leftContainer > h1 {
+    font-size: 16px;
+  }
+
+  .leftContainer > p {
+    font-size: 14px;
+  }
+
+  .cell {
+    font-size: 10px;
+  }
+
+  .dice {
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+  }
+
+  .rollDice {
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 8px 12px;
+    border: 1px solid rgb(35, 5, 62);
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .board {
+    grid-template-columns: repeat(10, 35px);
+    grid-template-rows: repeat(10, 35px);
+    gap: 1px;
+  }
+
+  .leftContainer > img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .leftContainer > h1 {
+    font-size: 18px;
+  }
+
+  .leftContainer > p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+
+  .board {
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+    gap: 0.5px;
+  }
+
+  .leftContainer > img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .leftContainer > h1 {
+    font-size: 16px;
+  }
+
+  .leftContainer > p {
+    font-size: 12px;
+  }
 }
