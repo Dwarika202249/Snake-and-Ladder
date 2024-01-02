@@ -141,6 +141,9 @@ function movePlayer(currentPosition, diceValue, clickCount) {
     const diceContainer = document.getElementById("diceContainer");
     const diceRollSound = document.getElementById("diceRollSound");
 
+    // Disable the "Roll Dice" button during the rolling
+    rollDiceButton.disabled = true;
+
     // Remove existing dice elements
     while (diceContainer.firstChild) {
       diceContainer.removeChild(diceContainer.firstChild);
@@ -175,7 +178,6 @@ function movePlayer(currentPosition, diceValue, clickCount) {
         // Set the final background image based on the random dice number
         dice.style.backgroundImage = `url('./images/${tempRandomDiceNumber}.png')`;
 
-        // Add other logic if needed after the animation completes
       }
     }, 150); // Adjust the interval duration for smoother animation
 
@@ -186,6 +188,8 @@ function movePlayer(currentPosition, diceValue, clickCount) {
     setTimeout(() => {
       // Set the background image based on the random dice number
       dice.style.backgroundImage = `url('./images/${randomDiceNumber}.png')`;
+      // Enable the "Roll Dice" button
+      rollDiceButton.disabled = false;
     }, 1000); // Adjust the timeout duration as needed
 
     return randomDiceNumber;
