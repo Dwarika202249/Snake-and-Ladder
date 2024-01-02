@@ -33,17 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(end).classList.add("ladder");
   }
 
-// function to move the player
-function movePlayer(currentPosition, diceValue, clickCount) {
+  // function to move the player
+  function movePlayer(currentPosition, diceValue, clickCount) {
     const newPosition = currentPosition + diceValue;
-  
+
     // Check if the player has landed on a snake
     if (snakesAndLadders[newPosition]) {
-      playSnakeOrLadderAudio(); 
+      playSnakeOrLadderAudio();
       playSnakeAnimation(newPosition); // Play GIF animation
       return snakesAndLadders[newPosition];
     }
-  
+
     // Check if the player has reached position 100
     if (newPosition == 100) {
       showWinPopup(clickCount);
@@ -54,24 +54,22 @@ function movePlayer(currentPosition, diceValue, clickCount) {
     if (newPosition > 100) {
       return currentPosition; // player position will not change
     }
-  
+
     return newPosition;
   }
-  
+
   // function to play GIF animation for snake or ladder
   function playSnakeAnimation(position) {
-    const animationContainer = document.createElement('div');
-    animationContainer.className = 'snake-ladder-animation';
+    const animationContainer = document.createElement("div");
+    animationContainer.className = "snake-ladder-animation";
     animationContainer.innerHTML = `<img src="./images/snake_animation.gif" alt="Snake Animation">`;
     document.getElementById(position).appendChild(animationContainer);
-  
+
     // Add a delay and then remove the animation container
     setTimeout(() => {
       document.getElementById(position).removeChild(animationContainer);
     }, 2000);
   }
-
-
 
   // function to play audio for snake or ladder
   function playSnakeOrLadderAudio() {
@@ -177,7 +175,6 @@ function movePlayer(currentPosition, diceValue, clickCount) {
 
         // Set the final background image based on the random dice number
         dice.style.backgroundImage = `url('./images/${tempRandomDiceNumber}.png')`;
-
       }
     }, 150); // Adjust the interval duration for smoother animation
 
@@ -201,11 +198,14 @@ function movePlayer(currentPosition, diceValue, clickCount) {
     const diceValue = rollDice();
     const newPosition = movePlayer(playerPosition, diceValue, clickCount);
 
-    // Animate the player movement
-    animatePlayerMovement(playerPosition, newPosition);
+    // Animate the player movement after a delay
+    setTimeout(() => {
+      animatePlayerMovement(playerPosition, newPosition);
 
-    playerPosition = newPosition;
-    updatePlayerPosition();
+      playerPosition = newPosition;
+      // alert(`You landed on ${playerPosition}`);
+      updatePlayerPosition();
+    }, 2000);
   });
 
   // initialize player position on the board
