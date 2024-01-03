@@ -63,7 +63,7 @@ body {
 
 .active {
   border-radius: 50%;
-  background-color: yellow; /* Change the background color for the active cell */
+  background-color: yellow; 
 }
 
 .rightContainer {
@@ -73,17 +73,22 @@ body {
   align-items: center;
 }
 
+.dice-container {
+    background-color: #000000;
+    border-radius: 5px;
+}
+
 .dice {
   width: 50px;
   height: 50px;
-  margin: 10px;
-  border: 1px solid #000;
+  margin: 5px;
   background-size: cover;
 }
 
 .rollDice {
   background-color: blueviolet;
-  color: #000;
+  margin-top: 15px;
+  color: white;
   border-radius: 5px;
   font-size: 14px;
   padding: 10px 15px;
