@@ -48,8 +48,19 @@ body {
   transition: background-color 1s ease-in-out;
 }
 
-.snake {
+.snake-head {
+  background-color: rgb(191, 8, 8);
+}
+
+.snake-tail {
   background-color: rgb(255, 76, 76);
+}
+
+.ladder-head {
+  background-color: rgb(0, 172, 0);
+}
+.ladder-tail {
+  background-color: rgb(125, 254, 125);
 }
 
 .snake-ladder-animation > img {
@@ -57,13 +68,9 @@ body {
   height: 50px;
 }
 
-.ladder {
-  background-color: rgb(125, 254, 125);
-}
-
 .active {
   border-radius: 50%;
-  background-color: yellow; 
+  background-color: yellow;
 }
 
 .rightContainer {

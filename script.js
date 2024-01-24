@@ -9,18 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     cell.id = i;
-    if(cell.id == 100) {
-        cell.style.backgroundColor = "blue";
-        cell.style.color = "white";
-        cell.textContent = "WIN";
+    if (cell.id == 100) {
+      cell.style.backgroundColor = "blue";
+      cell.style.color = "white";
+      cell.textContent = "WIN";
     } else {
-        cell.textContent = i;
+      cell.textContent = i;
     }
     board.appendChild(cell);
   }
 
-  // define snakes and ladders
-  const snakesAndLadders = {
+  // define snakes and ladders as separate objects
+  const snakes = {
     16: 6,
     47: 26,
     49: 11,
@@ -33,21 +33,46 @@ document.addEventListener("DOMContentLoaded", () => {
     98: 78,
   };
 
-  // add snakes and ladders to the board
-  for (const [start, end] of Object.entries(snakesAndLadders)) {
-    document.getElementById(start).classList.add("snake");
-    document.getElementById(end).classList.add("ladder");
+  const ladders = {
+    // Define ladder positions
+    7: 53,
+    12: 25,
+    28: 56,
+    32: 42,
+    45: 90,
+    59: 71,
+    17: 97,
+  };
+
+  // add snakes to the board
+  for (const [start, end] of Object.entries(snakes)) {
+    document.getElementById(start).classList.add("snake-head");
+    document.getElementById(end).classList.add("snake-tail");
+  }
+
+  // add ladders to the board
+  for (const [start, end] of Object.entries(ladders)) {
+    document.getElementById(start).classList.add("ladder-head");
+    document.getElementById(end).classList.add("ladder-tail");
   }
 
   // function to move the player
   function movePlayer(currentPosition, diceValue, clickCount) {
     const newPosition = currentPosition + diceValue;
 
-    // Check if the player has landed on a snake
-    if (snakesAndLadders[newPosition]) {
-      playSnakeOrLadderAudio();
-      playSnakeAnimation(newPosition); // Play GIF animation
-      return snakesAndLadders[newPosition];
+    // Check if the player has landed on a snake or ladder
+    if (snakes[newPosition] || ladders[newPosition]) {
+      
+
+      if (snakes[newPosition]) {
+        playSnakeAnimation(newPosition); // Play GIF animation for snake
+        playSnakeOrLadderAudio();
+        return snakes[newPosition];
+      } else if (ladders[newPosition]) {
+        playLadderAnimation(newPosition); // Play GIF animation for ladder
+        playLadderAudio();
+        return ladders[newPosition];
+      }
     }
 
     // Check if the player has reached position 100
@@ -64,6 +89,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return newPosition;
   }
 
+  // function to play GIF animation for ladder
+  function playLadderAnimation(position) {
+    const animationContainer = document.createElement("div");
+    animationContainer.className = "snake-ladder-animation";
+    animationContainer.innerHTML = `<img src="./images/ladder_animation.gif" alt="Ladder Animation">`;
+    // animationContainer.innerHTML = "Ladder";
+    document.getElementById(position).appendChild(animationContainer);
+
+    // Add a delay and then remove the animation container
+    setTimeout(() => {
+      document.getElementById(position).removeChild(animationContainer);
+    }, 2000);
+  }
+
   // function to play GIF animation for snake or ladder
   function playSnakeAnimation(position) {
     const animationContainer = document.createElement("div");
@@ -75,6 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       document.getElementById(position).removeChild(animationContainer);
     }, 2000);
+  }
+
+  // function to play audio for ladder
+  function playLadderAudio() {
+    const ladderAudio = new Audio("./audio/ladder_up.mp3");
+    ladderAudio.play();
   }
 
   // function to play audio for snake or ladder
